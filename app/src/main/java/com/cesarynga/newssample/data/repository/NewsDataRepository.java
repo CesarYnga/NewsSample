@@ -21,14 +21,14 @@ public class NewsDataRepository implements NewsRepository {
 
     @Override
     public List<News> newsList() throws Exception {
-        final NewsDataSource newsDataSource = this.newsDataSourceFactory.create();
+        final NewsDataSource newsDataSource = this.newsDataSourceFactory.createNetworkDataStore();
         List<NewsEntity> newsEntityList = newsDataSource.newsEntityList();
         return newsEntityDataMapper.transform(newsEntityList);
     }
 
     @Override
     public News insetNews(News news) throws Exception {
-        final NewsDataSource newsDataSource = this.newsDataSourceFactory.create();
+        final NewsDataSource newsDataSource = this.newsDataSourceFactory.createNetworkDataStore();
         NewsEntity newsEntity = newsDataSource.insertNewsEntity(newsEntityDataMapper.transform(news));
         return newsEntityDataMapper.transform(newsEntity);
     }

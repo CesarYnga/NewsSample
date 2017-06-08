@@ -13,7 +13,7 @@ public class NewsDataSourceFactory {
         this.context = context;
     }
 
-    public NewsDataSource create() {
+    public NewsDataSource createNetworkDataStore() {
         RestApi restApi = new RestApiImpl(this.context);
         return new NetworkNewsDataSource(restApi);
     }
